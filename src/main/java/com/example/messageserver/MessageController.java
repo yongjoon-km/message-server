@@ -14,8 +14,12 @@ import javax.validation.Valid;
 @RestController
 public class MessageController {
 
+    @Autowired
+    MessagePushService messagePushService;
+
     @PostMapping("/messages")
-    public ResponseEntity<Message> createNewMessage(@Valid @RequestBody Message message) {
+    public ResponseEntity<Message> createNewMessage(@Valid @RequestBody Message message) throws Exception {
+        messagePushService.pushMessage(message);
         return ResponseEntity.status(HttpStatus.CREATED).body(message);
     }
 
