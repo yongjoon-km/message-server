@@ -11,7 +11,7 @@ public class MessagePushService {
     KafkaTemplate<String, String> kafkaTemplate;
 
     public void pushMessage(Message message) throws Exception {
-        kafkaTemplate.send("message", message.getMessage());
+        kafkaTemplate.send("Message", message.getMessage());
     }
 
 }
